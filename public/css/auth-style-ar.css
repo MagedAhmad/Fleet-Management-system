@@ -1,0 +1,49 @@
+@import '../assets/css/bootstrap-4.5.2.min.css';
+.login_garida{
+	width: 100%;
+	height: 100vh;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+}
+.login_garida::before{
+	position: absolute;
+	content: '';
+	top: 0;
+	right: 0;
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(0deg,rgba(44,44,44,.7),rgba(3, 54, 224, 0.6));
+}
+.login_garida__logo{
+	height: 250px;
+	display: block;
+	margin: 0 auto 50px;
+}
+.login_garida > .container{
+	position: relative;
+	z-index: 2;
+}
+.login_garida__form .form-control-lg{
+	height: 50px;
+}
+.login_garida__form .btn-lg{
+	font-weight: 700;
+	padding: .924rem 1rem;
+}
+
+/*--------- Responsive ----- */
+@media (max-width: 992px) {
+    
+}
+@media (max-width: 768px) {
+    
+}
+@media (max-width: 480px) {
+	
+}

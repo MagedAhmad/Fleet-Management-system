@@ -1,0 +1,30 @@
+// Icons
+@import "../icons";
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+@import "~daterangepicker/daterangepicker.css";
+@import "~bootstrap-colorpicker/src/sass/colorpicker";
+@import "~tempusdominus-bootstrap-4/src/sass/tempusdominus-bootstrap-4";
+@import "~bootstrap4-duallistbox/dist/bootstrap-duallistbox.css";
+@import "../editor";
+@import "~admin-lte/build/scss/AdminLTE";
+@import "../icheck";
+@import "../select2";
+@import "./custom";
+
+@font-face {
+    font-family: icomoon;
+    src: url(/fonts/vendor/icomoon/icomoon.eot?b48a6e5d6d0a0693c9236ce5500e50ad);
+    src: url(/fonts/vendor/icomoon/icomoon.eot?b48a6e5d6d0a0693c9236ce5500e50ad#iefix) format("embedded-opentype"), url(/fonts/vendor/icomoon/icomoon.ttf?6a837d3eaef514e9b032910d20f55b94) format("truetype"), url(/fonts/vendor/icomoon/icomoon.woff?db57a7430ed1cd1f82cca50b8ec03e42) format("woff"), url(/fonts/vendor/icomoon/icomoon.svg?8e61b486cfdea12e4ed952a4c5bdf154#icomoon) format("svg");
+    font-weight: 400;
+    font-style: normal
+}
+
+@font-face{
+    font-family: 'din-next-bold';
+    src: url('../fonts/rtl/din-next-lt-w23-bold.ttf');
+}
+@font-face{
+    font-family: 'din-next-regular';
+    src: url('../fonts/rtl/din-next-lt-w23-regular.ttf');
+}

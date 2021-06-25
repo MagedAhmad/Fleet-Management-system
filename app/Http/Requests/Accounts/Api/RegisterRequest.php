@@ -1,0 +1,49 @@
+<?php
+
+namespace App\Http\Requests\Accounts\Api;
+
+use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\Accounts\WithHashedPassword;
+
+class RegisterRequest extends FormRequest
+{
+    use WithHashedPassword;
+
+    /**
+     * Determine if the supervisor is authorized to make this request.
+     *
+     * @return bool
+     */
+    public function authorize()
+    {
+        return true;
+    }
+
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array
+     */
+    public function rules()
+    {
+        return [
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'email', 'unique:users,email'],
+            'phone' => ['required', 'unique:users,phone'],
+            'password' => ['required', 'min:8', 'confirmed'],
+            'country_id' => ['sometimes', 'nullable', 'exists:countries,id'],
+            'city_id' => ['sometimes', 'nullable', 'exists:cities,id'],
+            'area_id' => ['sometimes', 'nullable', 'exists:areas,id'],
+        ];
+    }
+
+    /**
+     * Get custom attributes for validator errors.
+     *
+     * @return array
+     */
+    public function attributes()
+    {
+        return trans('customers.attributes');
+    }
+}
