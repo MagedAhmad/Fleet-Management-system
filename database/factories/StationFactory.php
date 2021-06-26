@@ -22,7 +22,7 @@ class StationFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name' => $this->faker->city
         ];
     }
 }

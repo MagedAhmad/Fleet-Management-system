@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\BusController;
+use App\Http\Controllers\Api\BookingController;
 use App\Http\Controllers\Accounts\SelectController;
 use App\Http\Controllers\Accounts\Api\LoginController;
 use App\Http\Controllers\Accounts\Api\ProfileController;
@@ -26,18 +28,24 @@ use App\Http\Controllers\Notifications\SelectController as NotificationsSelectCo
 
 Route::post('/register', [RegisterController::class, 'register'])->name('sanctum.register');
 Route::post('/login', [LoginController::class, 'login'])->name('sanctum.login');
-Route::post('/firebase/login', [LoginController::class, 'firebase'])->name('sanctum.login.firebase');
 
 Route::post('/password/forget', [ResetPasswordController::class, 'forget'])->name('api.password.forget');
 Route::post('/password/code', [ResetPasswordController::class, 'code'])->name('api.password.code');
 Route::post('/password/reset', [ResetPasswordController::class, 'reset'])->name('api.password.reset');
-Route::get('/select/users', [SelectController::class, 'index'])->name('users.select');
 
 
 Route::get('/select/users', [SelectController::class, 'index'])->name('users.select');
-Route::get('/select/customers', [NotificationsSelectController::class, 'customers'])->name('customers.select');
-
 Route::get('user/search', [ProfileController::class, 'search']);
 
 // Settings
 Route::get('settings', [SettingController::class, 'index'])->name('settings.index');
+
+Route::middleware(['auth:sanctum'])->group(
+    function () {
+        // Bookings
+        Route::post('bookings', [BookingController::class, 'book']);
+
+    }
+);
+// buses
+Route::post('buses/{bus}/available_seats', [BusController::class, 'available_seats']);

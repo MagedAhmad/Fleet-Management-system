@@ -21,7 +21,7 @@ class CreateBookingsTable extends Migration
             $table->foreignId('end_id');
             $table->foreignId('customer_id');
 
-            $table->foreign('customer_id')->references('id')->on('buses')->onDelete('cascade');
+            $table->foreign('customer_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('bus_id')->references('id')->on('buses')->onDelete('cascade');
             $table->foreign('seat_id')->references('id')->on('seats')->onDelete('cascade');
             $table->foreign('start_id')->references('id')->on('stations')->onDelete('cascade');

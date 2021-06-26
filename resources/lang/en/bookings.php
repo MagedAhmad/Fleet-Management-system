@@ -25,6 +25,7 @@ return [
         'created' => 'The Booking has been created successfully.',
         'updated' => 'The Booking has been updated successfully.',
         'deleted' => 'The Booking has been deleted successfully.',
+        'not_available_seats' => 'No room in this trip',
     ],
     'attributes' => [
         'bus_id' => 'Bus',

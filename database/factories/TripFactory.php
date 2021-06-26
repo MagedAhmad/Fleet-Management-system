@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Trip;
+use App\Models\Station;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class TripFactory extends Factory
@@ -22,7 +23,8 @@ class TripFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'depature_station_id' => Station::factory(),
+            'arrival_station_id' => Station::factory()
         ];
     }
 }

@@ -46,17 +46,27 @@ class Bus extends Model
     /**
      * Get reserved seats
      *
-     * @param App\Models\Station $start
-     * @param App\Models\Station $end
-     * @return App\Models\Seat $seats
+     * @param integer $start order of start station
+     * @param integer $end order of end station
+     * @return Illuminate\Support\Collection $reserved_seats
      */
     public function reserved_seats($start, $end) 
     {
-        $reserved_seats = $this->seats()->whereHas('bookings',function($query) use ($start,$end) {
-            $query->where('start_id', '<=', $end)->where('end_id', '>=', $start);
-        });
+        $reserved_seats = [];
+
+        foreach($this->bookings as $booking)
+        {
+            $booking_start_order = $booking->start->order;
+            $booking_end_order = $booking->end->order;
+
+            // for each bus booking  
+            // if seat is reserved push to array
+            if($end >= $booking_start_order && $start <= $booking_end_order) {
+                array_push($reserved_seats, $booking->seat);
+            }
+        }
     
-        return $reserved_seats;
+        return collect($reserved_seats);
     }
 
     /**
@@ -68,7 +78,7 @@ class Bus extends Model
      */
     public function available_seats($start, $end) 
     {
-        $reserved_seats = $this->reserved_seats()->pluck('id');
+        $reserved_seats = $this->reserved_seats($start, $end)->pluck('id');
 
         $seats = $this->seats()->whereNotIn('id', $reserved_seats)->get();
     
@@ -84,7 +94,7 @@ class Bus extends Model
      */
     public function isAvailable($start, $end)
     {
-        return (count($this->reserved_seats) < Bus::SEATS_COUNT);
+        return (count($this->reserved_seats($start, $end)) < Bus::SEATS_COUNT);
     }
 
     /**
@@ -105,5 +115,15 @@ class Bus extends Model
     public function trip()
     {
         return $this->belongsTo(Trip::class);
+    }
+
+    /**
+     * Get bus bookings
+     *
+     * @return void
+     */
+    public function bookings()
+    {
+        return $this->hasMany(Booking::class);
     }
 }

@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Admin;
+use App\Models\Customer;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -19,9 +20,19 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin@demo.com',
         ]);
 
+        Customer::factory()->createOne([
+            'name' => 'Customer',
+            'email' => 'customer@demo.com',
+        ]);
+
         $this->command->info('Default Admin Information:');
 
-        $this->command->warn('Email : admin@ibtdi.com');
+        $this->command->warn('Email : admin@demo.com');
+        $this->command->warn('Password : password');
+
+        $this->command->info('Default Customer Information:');
+
+        $this->command->warn('Email : customer@demo.com');
         $this->command->warn('Password : password');
 
         $this->command->warn('Do not consider seed dummy data while in production mode!');
