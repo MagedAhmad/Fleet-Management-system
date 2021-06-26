@@ -1,3 +1,7 @@
+# Fleet-management system (bus-booking system) .  
+
+![bookings image](/public/images/bookings.png)
+
 ### installation steps:
 
 ```
@@ -12,6 +16,7 @@ Change db credentials then
 ```
 php artisan migrate --seed
 ```
+![bookings image](/public/images/trip_stoppages.png)
 
 ### postman for the project 
 https://www.getpostman.com/collections/c0ea34976781ba255890
