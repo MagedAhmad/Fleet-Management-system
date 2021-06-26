@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\BusController;
+use App\Http\Controllers\Api\TripController;
 use App\Http\Controllers\Api\BookingController;
 use App\Http\Controllers\Accounts\SelectController;
 use App\Http\Controllers\Accounts\Api\LoginController;
@@ -49,3 +50,6 @@ Route::middleware(['auth:sanctum'])->group(
 );
 // buses
 Route::post('buses/{bus}/available_seats', [BusController::class, 'available_seats']);
+
+// trips
+Route::resource('trips', TripController::class)->only(['index', 'show']);
