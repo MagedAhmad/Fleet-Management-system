@@ -9,8 +9,6 @@ class Bus extends Model
 {
     use HasFactory;
 
-    // $bus->available_seats($from, $to);
-
     /**
      * Seat count
      */

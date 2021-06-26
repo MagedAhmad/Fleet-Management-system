@@ -5,6 +5,7 @@ use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Dashboard\CityController;
 use App\Http\Controllers\Dashboard\CountryController;
+use App\Http\Controllers\Dashboard\StationController;
 use App\Http\Controllers\Accounts\Dashboard\UserController;
 use App\Http\Controllers\Accounts\Dashboard\AdminController;
 use App\Http\Controllers\Settings\Dashboard\SettingController;
@@ -38,3 +39,5 @@ Route::patch('users/{user}/activate', [UserController::class, 'activate'])->name
 // Settings
 Route::get('settings', [SettingController::class, 'index'])->name('settings.index');
 Route::put('settings', [SettingController::class, 'update'])->name('settings.update');
+
+Route::resource('stations', StationController::class);

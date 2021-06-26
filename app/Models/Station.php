@@ -11,6 +11,10 @@ class Station extends Model
 {
     use HasFactory, Translatable;
 
+    protected $fillable = [
+        'name'
+    ];
+
     /**
      * The translated attributes that are mass assignable.
      *

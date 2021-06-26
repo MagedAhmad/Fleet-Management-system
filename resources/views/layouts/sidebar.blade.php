@@ -8,6 +8,15 @@
 @include('dashboard.accounts.sidebar')
 
 @component('dashboard::components.sidebarItem')
+    @slot('url', route('dashboard.stations.index'))
+    @slot('name', trans('stations.plural'))
+    @slot('icon', 'fas fa-bus')
+    @slot('can', ['ability' => 'viewAny', 'model' => \App\Models\Station::class])
+    @slot('active', request()->routeIs('dashboard.stations.index'))
+@endcomponent
+
+
+@component('dashboard::components.sidebarItem')
     @slot('url', route('dashboard.settings.index'))
     @slot('name', trans('settings.plural'))
     @slot('icon', 'fas fa-cog')

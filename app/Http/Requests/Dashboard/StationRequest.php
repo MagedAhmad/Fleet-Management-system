@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Requests\Feedbacks;
+namespace App\Http\Requests\Dashboard;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Astrotomic\Translatable\Validation\RuleFactory;
 
-class FeedbackRequest extends FormRequest
+class StationRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,8 +26,7 @@ class FeedbackRequest extends FormRequest
     {
         return RuleFactory::make(
             [
-                'title' => ['required', 'string', 'max:255'],
-                'message' => ['required', 'string'],
+                '%name%' => ['required', 'string', 'max:255'],
             ]
         );
     }
@@ -39,6 +38,6 @@ class FeedbackRequest extends FormRequest
      */
     public function attributes()
     {
-        return RuleFactory::make(trans('feedback.attributes'));
+        return RuleFactory::make(trans('stations.attributes'));
     }
 }
