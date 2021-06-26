@@ -21,19 +21,25 @@ class BookingController extends Controller
     public function book(BookingRequest $request)
     {
         $bus = Bus::findOrFail($request->bus_id);
-        $first_station = Stoppage::findOrFail($request->start_id);
-        $end_station = Stoppage::findOrFail($request->end_id);
 
-        $seats = $bus->available_seats($first_station->order, $end_station->order);
+        $start_stoppage = Stoppage::where('station_id', $request->start_id)
+            ->where('trip_id', $bus->trip->id)
+            ->first();
 
-        if(!count($seats)) {
+        $end_stoppage = Stoppage::where('station_id', $request->end_id)
+            ->where('trip_id', $bus->trip->id)
+            ->first();
+
+        $available_seats = $bus->available_seats($start_stoppage->order, $end_stoppage->order);
+
+        if(!count($available_seats)) {
             return response()->json([
                 'message' => __('bookings.messages.not_available_seats'),
             ]);
         }
 
         $booking = $bus->bookings()->create([
-            'seat_id' => $seats->first()->id,
+            'seat_id' => $available_seats->first()->id,
             'start_id' => $request->start_id,
             'end_id' => $request->end_id,
             'customer_id' => auth()->id()

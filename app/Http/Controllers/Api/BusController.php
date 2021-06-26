@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Models\Bus;
+use App\Models\Stoppage;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\SeatResource;
@@ -19,8 +20,16 @@ class BusController extends Controller
      */
     public function available_seats(BusRequest $request, Bus $bus)
     {
-        $available_seats = $bus->available_seats($request->start_id, $request->end_id);
+        $start_stoppage = Stoppage::where('station_id', $request->start_id)
+            ->where('trip_id', $bus->trip->id)
+            ->first();
 
-        return SeatResource::collection($available_seats);
+        $end_stoppage = Stoppage::where('station_id', $request->end_id)
+            ->where('trip_id', $bus->trip->id)
+            ->first();
+
+        $available_seats = $bus->available_seats($start_stoppage->order, $end_stoppage->order);
+
+        return $available_seats;
     }
 }

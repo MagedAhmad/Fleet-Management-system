@@ -26,6 +26,8 @@ class CreateBookingsTable extends Migration
             $table->foreign('seat_id')->references('id')->on('seats')->onDelete('cascade');
             $table->foreign('start_id')->references('id')->on('stations')->onDelete('cascade');
             $table->foreign('end_id')->references('id')->on('stations')->onDelete('cascade');
+
+            $table->unique(['start_id', 'end_id', 'seat_id']);
             $table->timestamps();
         });
     }

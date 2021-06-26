@@ -36,8 +36,8 @@ trait BookingHelpers
     /**
      * Get available seats
      *
-     * @param integer $start
-     * @param integer $end
+     * @param integer $start order of start station
+     * @param integer $end order of end station
      * @return Illuminate\Support\Collection $seats
      */
     public function available_seats($start, $end) 

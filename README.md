@@ -12,3 +12,9 @@ Change db credentials then
 ```
 php artisan migrate --seed
 ```
+
+
+### TODO
+
+1- Add test cases
+2- Change the order logic for trip->stoppages 

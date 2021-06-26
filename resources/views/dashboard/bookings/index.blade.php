@@ -27,10 +27,10 @@
                     {{ $booking->seat->id }}
                 </td>
                 <td>
-                    {{ $booking->start->name }}
+                    {{ $booking->start->station->name }}
                 </td>
                 <td>
-                    {{ $booking->end->name }}
+                    {{ $booking->end->station->name }}
                 </td>
                 <td>{{ $booking->created_at->format('Y-m-d') }}</td>
 

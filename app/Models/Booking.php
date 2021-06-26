@@ -43,7 +43,7 @@ class Booking extends Model
      */
     public function start()
     {
-        return $this->belongsTo(Station::class, 'start_id');
+        return $this->belongsTo(Stoppage::class, 'start_id');
     }
 
     /**
@@ -53,7 +53,7 @@ class Booking extends Model
      */
     public function end()
     {
-        return $this->belongsTo(Station::class, 'end_id');
+        return $this->belongsTo(Stoppage::class, 'end_id');
     }
 
     /**
