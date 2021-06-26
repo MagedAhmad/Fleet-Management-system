@@ -16,14 +16,17 @@ Change db credentials then
 ```
 php artisan migrate --seed
 ```
-![bookings image](/public/images/trip_stoppages.png)
+![trip stoppages image](/public/images/trip_stoppages.png)
 
 ### postman for the project 
 https://www.getpostman.com/collections/c0ea34976781ba255890
 
+![postman image](/public/images/postman.png)
+
 ### TODO
 
-1- Add test cases
+1- Add test cases   
+
 2- Change the order logic for trip->stoppages 
 
 
