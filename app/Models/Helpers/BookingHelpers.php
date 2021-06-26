@@ -25,7 +25,7 @@ trait BookingHelpers
 
             // for each bus booking  
             // if seat is reserved push to array
-            if($end >= $booking_start_order && $start < $booking_end_order) {
+            if($end >= $booking_start_order && $start <= $booking_end_order) {
                 array_push($reserved_seats, $booking->seat);
             }
         }
