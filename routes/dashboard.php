@@ -5,6 +5,7 @@ use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Dashboard\CityController;
 use App\Http\Controllers\Dashboard\TripController;
+use App\Http\Controllers\Dashboard\BookingController;
 use App\Http\Controllers\Dashboard\CountryController;
 use App\Http\Controllers\Dashboard\StationController;
 use App\Http\Controllers\Dashboard\StoppageController;
@@ -48,3 +49,5 @@ Route::resource('stations', StationController::class);
 Route::resource('trips', TripController::class);
 // stoppages
 Route::resource('trips/{trip}/stoppages', StoppageController::class);
+// bookings
+Route::resource('bookings', BookingController::class);

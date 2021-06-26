@@ -10,6 +10,13 @@ class Booking extends Model
     use HasFactory;
 
     /**
+     * Protected from mass assignment
+     *
+     * @var array
+     */
+    protected $guarded = [];
+
+    /**
      * Get bus
      *
      * @return void

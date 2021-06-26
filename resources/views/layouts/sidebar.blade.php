@@ -23,6 +23,13 @@
     @slot('active', request()->routeIs('dashboard.trips.index'))
 @endcomponent
 
+@component('dashboard::components.sidebarItem')
+    @slot('url', route('dashboard.bookings.index'))
+    @slot('name', trans('bookings.plural'))
+    @slot('icon', 'fa fa-book')
+    @slot('can', ['ability' => 'viewAny', 'model' => \App\Models\Booking::class])
+    @slot('active', request()->routeIs('dashboard.bookings.index'))
+@endcomponent
 
 @component('dashboard::components.sidebarItem')
     @slot('url', route('dashboard.settings.index'))
