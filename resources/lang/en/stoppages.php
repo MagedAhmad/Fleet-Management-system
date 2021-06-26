@@ -6,6 +6,8 @@ return [
     'empty' => 'There are no Stoppages',
     'select' => 'Select Stoppage',
     'perPage' => 'Count Results Per Page',
+    'last_station' => 'Last station',
+    'first_station' => 'First station',
     'actions' => [
         'list' => 'List Stoppages',
         'show' => 'Show Stoppage',

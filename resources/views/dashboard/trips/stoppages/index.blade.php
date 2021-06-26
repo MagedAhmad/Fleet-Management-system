@@ -24,7 +24,13 @@
                 </td>
 
                 <td>
-                       {{ $stoppage->order }}
+                       @if($stoppage->order == 100)
+                        {{__('stoppages.last_station')}}
+                       @elseif($stoppage->order == 0) 
+                        {{__('stoppages.first_station')}}
+                       @else 
+                        {{$stoppage->order}}
+                       @endif
                 </td>
             </tr>
         @empty

@@ -2,10 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\Area;
-use App\Models\City;
 use App\Models\Admin;
-use App\Models\Country;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\Factory;
 

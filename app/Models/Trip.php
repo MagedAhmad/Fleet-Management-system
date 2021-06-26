@@ -15,6 +15,25 @@ class Trip extends Model
     ];
 
     /**
+     * Boot methods for trip
+     *
+     * @return void
+     */
+    protected static function boot(){
+        parent::boot();
+
+        static::deleting(function($trip){
+            Bus::where('trip_id', $trip->id)->delete();
+        });
+
+        static::created(function($trip) {
+            Bus::create([
+                'trip_id' => $trip->id
+            ]);
+        });
+    }
+
+    /**
      * Get depature station
      *
      * @return void
