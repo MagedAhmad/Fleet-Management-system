@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Models\Bus;
 use App\Models\Station;
+use App\Models\Stoppage;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\BookingResource;
@@ -20,8 +21,8 @@ class BookingController extends Controller
     public function book(BookingRequest $request)
     {
         $bus = Bus::findOrFail($request->bus_id);
-        $first_station = Station::findOrFail($request->start_id);
-        $end_station = Station::findOrFail($request->end_id);
+        $first_station = Stoppage::findOrFail($request->start_id);
+        $end_station = Stoppage::findOrFail($request->end_id);
 
         $seats = $bus->available_seats($first_station->order, $end_station->order);
 

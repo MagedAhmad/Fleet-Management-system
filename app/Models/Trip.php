@@ -30,6 +30,16 @@ class Trip extends Model
             Bus::create([
                 'trip_id' => $trip->id
             ]);
+
+            $trip->stoppages()->create([
+                'station_id' => $trip->depature_station->id,
+                'order' => 0
+            ]);
+            
+            $trip->stoppages()->create([
+                'station_id' => $trip->arrival_station->id,
+                'order' => 100
+            ]);
         });
     }
 

@@ -25,7 +25,7 @@ trait BookingHelpers
 
             // for each bus booking  
             // if seat is reserved push to array
-            if($end >= $booking_start_order && $start <= $booking_end_order) {
+            if($end >= $booking_start_order && $start < $booking_end_order) {
                 array_push($reserved_seats, $booking->seat);
             }
         }
@@ -36,9 +36,9 @@ trait BookingHelpers
     /**
      * Get available seats
      *
-     * @param App\Models\Station $start
-     * @param App\Models\Station $end
-     * @return App\Models\Seat $seats
+     * @param integer $start
+     * @param integer $end
+     * @return Illuminate\Support\Collection $seats
      */
     public function available_seats($start, $end) 
     {
