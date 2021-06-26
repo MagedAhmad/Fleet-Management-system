@@ -7,6 +7,7 @@ use App\Http\Controllers\Dashboard\CityController;
 use App\Http\Controllers\Dashboard\TripController;
 use App\Http\Controllers\Dashboard\CountryController;
 use App\Http\Controllers\Dashboard\StationController;
+use App\Http\Controllers\Dashboard\StoppageController;
 use App\Http\Controllers\Accounts\Dashboard\UserController;
 use App\Http\Controllers\Accounts\Dashboard\AdminController;
 use App\Http\Controllers\Settings\Dashboard\SettingController;
@@ -41,5 +42,9 @@ Route::patch('users/{user}/activate', [UserController::class, 'activate'])->name
 Route::get('settings', [SettingController::class, 'index'])->name('settings.index');
 Route::put('settings', [SettingController::class, 'update'])->name('settings.update');
 
+// stations
 Route::resource('stations', StationController::class);
+// trips
 Route::resource('trips', TripController::class);
+// stoppages
+Route::resource('trips/{trip}/stoppages', StoppageController::class);

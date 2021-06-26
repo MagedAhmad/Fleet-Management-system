@@ -33,4 +33,14 @@ class Trip extends Model
     {
         return $this->belongsTo(Station::class, 'arrival_station_id');
     }
+
+    /**
+     * Get trip stoppages
+     *
+     * @return void
+     */
+    public function stoppages()
+    {
+        return $this->hasMany(Stoppage::class);
+    }
 }

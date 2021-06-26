@@ -16,6 +16,7 @@
         </table>
 
         @slot('footer')
+            @include('dashboard.trips.partials.actions.stoppages')
             @include('dashboard.trips.partials.actions.delete')
         @endslot
     @endcomponent

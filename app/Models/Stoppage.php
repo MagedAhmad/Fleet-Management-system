@@ -10,6 +10,13 @@ class Stoppage extends Model
     use HasFactory;
 
     /**
+     * Protected fields for mass assignement
+     *
+     * @var array
+     */
+    protected $guarded = [];
+    
+    /**
      * Get trip
      *
      * @return void

@@ -34,6 +34,7 @@
 
                 <td style="width: 160px">
                     @include('dashboard.trips.partials.actions.show')
+                    @include('dashboard.trips.partials.actions.stoppages')
                     @include('dashboard.trips.partials.actions.delete')
                 </td>
             </tr>
