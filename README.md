@@ -13,8 +13,12 @@ Change db credentials then
 php artisan migrate --seed
 ```
 
+### postman for the project 
+https://www.getpostman.com/collections/c0ea34976781ba255890
 
 ### TODO
 
 1- Add test cases
 2- Change the order logic for trip->stoppages 
+
+
