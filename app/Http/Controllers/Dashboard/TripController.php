@@ -56,12 +56,12 @@ class TripController extends Controller
     {
         $trip = Trip::create($request->all());
 
-        $trip->stoppages->create([
+        $trip->stoppages()->create([
             'station_id' => $request->depature_station_id,
             'order' => 0
         ]);
 
-        $trip->stoppages->create([
+        $trip->stoppages()->create([
             'station_id' => $request->arrival_station_id,
             'order' => 100
         ]);
