@@ -3,15 +3,15 @@
 namespace App\Policies;
 
 use App\Models\User;
-use App\Models\Station;
+use App\Models\Trip;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class StationPolicy
+class TripPolicy
 {
     use HandlesAuthorization;
 
     /**
-     * Determine whether the user can view any stations.
+     * Determine whether the user can view any trips.
      *
      * @param \App\Models\User $user
      * @return mixed
@@ -22,19 +22,19 @@ class StationPolicy
     }
 
     /**
-     * Determine whether the user can view the station.
+     * Determine whether the user can view the trip.
      *
      * @param \App\Models\User $user
-     * @param \App\Models\Station $station
+     * @param \App\Models\Trip $trip
      * @return mixed
      */
-    public function view(User $user, Station $station)
+    public function view(User $user, Trip $trip)
     {
         return $user->isAdmin();
     }
 
     /**
-     * Determine whether the user can create stations.
+     * Determine whether the user can create trips.
      *
      * @param \App\Models\User $user
      * @return mixed
@@ -45,37 +45,37 @@ class StationPolicy
     }
 
     /**
-     * Determine whether the user can update the station.
+     * Determine whether the user can update the trip.
      *
      * @param \App\Models\User $user
-     * @param \App\Models\Station $station
+     * @param \App\Models\Trip $trip
      * @return mixed
      */
-    public function update(User $user, Station $station)
+    public function update(User $user, Trip $trip)
     {
         return $user->isAdmin();
     }
 
     /**
-     * Determine whether the user can update the type of the station.
+     * Determine whether the user can update the type of the trip.
      *
      * @param \App\Models\User $user
-     * @param \App\Models\Station $station
+     * @param \App\Models\Trip $trip
      * @return mixed
      */
-    public function updateType(User $user, Station $station)
+    public function updateType(User $user, Trip $trip)
     {
         return $user->isAdmin();
     }
 
     /**
-     * Determine whether the user can delete the station.
+     * Determine whether the user can delete the trip.
      *
      * @param \App\Models\User $user
-     * @param \App\Models\Station $station
+     * @param \App\Models\Trip $trip
      * @return mixed
      */
-    public function delete(User $user, Station $station)
+    public function delete(User $user, Trip $trip)
     {
         return $user->isAdmin();
     }

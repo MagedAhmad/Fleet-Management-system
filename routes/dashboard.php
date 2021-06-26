@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Dashboard\CityController;
+use App\Http\Controllers\Dashboard\TripController;
 use App\Http\Controllers\Dashboard\CountryController;
 use App\Http\Controllers\Dashboard\StationController;
 use App\Http\Controllers\Accounts\Dashboard\UserController;
@@ -41,3 +42,4 @@ Route::get('settings', [SettingController::class, 'index'])->name('settings.inde
 Route::put('settings', [SettingController::class, 'update'])->name('settings.update');
 
 Route::resource('stations', StationController::class);
+Route::resource('trips', TripController::class);

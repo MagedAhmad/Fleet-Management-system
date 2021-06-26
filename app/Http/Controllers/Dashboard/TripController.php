@@ -3,11 +3,25 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Models\Trip;
+use App\Models\Station;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use App\Http\Requests\Dashboard\TripRequest;
+use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class TripController extends Controller
 {
+    use AuthorizesRequests, ValidatesRequests;
+
+    /**
+     * TripController constructor.
+     */
+    public function __construct()
+    {
+        $this->authorizeResource(Trip::class, 'trip');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +29,9 @@ class TripController extends Controller
      */
     public function index()
     {
-        //
+        $trips = Trip::latest()->paginate();
+
+        return view('dashboard.trips.index', compact('trips'));
     }
 
     /**
@@ -25,62 +41,50 @@ class TripController extends Controller
      */
     public function create()
     {
-        //
+        $stations = Station::all();
+
+        return view('dashboard.trips.create', compact('stations'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param \App\Http\Requests\Dashboard\TripRequest $request
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(Request $request)
+    public function store(TripRequest $request)
     {
-        //
+        $trip = Trip::create($request->all());
+
+        flash(trans('trips.messages.created'));
+
+        return redirect()->route('dashboard.trips.show', $trip);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Trip  $trip
+     * @param \App\Models\Trip $trip
      * @return \Illuminate\Http\Response
      */
     public function show(Trip $trip)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Trip  $trip
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Trip $trip)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Trip  $trip
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Trip $trip)
-    {
-        //
+        return view('dashboard.trips.show', compact('trip'));
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Trip  $trip
-     * @return \Illuminate\Http\Response
+     * @param \App\Models\Trip $trip
+     * @throws \Exception
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(Trip $trip)
     {
-        //
+        $trip->delete();
+
+        flash(trans('trips.messages.deleted'));
+
+        return redirect()->route('dashboard.trips.index');
     }
 }

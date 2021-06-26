@@ -15,6 +15,14 @@
     @slot('active', request()->routeIs('dashboard.stations.index'))
 @endcomponent
 
+@component('dashboard::components.sidebarItem')
+    @slot('url', route('dashboard.trips.index'))
+    @slot('name', trans('trips.plural'))
+    @slot('icon', 'fa fa-plane')
+    @slot('can', ['ability' => 'viewAny', 'model' => \App\Models\Trip::class])
+    @slot('active', request()->routeIs('dashboard.trips.index'))
+@endcomponent
+
 
 @component('dashboard::components.sidebarItem')
     @slot('url', route('dashboard.settings.index'))
