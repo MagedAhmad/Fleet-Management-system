@@ -43,4 +43,5 @@ https://www.getpostman.com/collections/c0ea34976781ba255890
 
 2- Change the order logic for trip->stoppages 
 
+3- Fix issue with bookings logic (Not enough time this weekend ^^)
 
