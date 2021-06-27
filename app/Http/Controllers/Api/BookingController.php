@@ -15,20 +15,27 @@ class BookingController extends Controller
     /**
      * Book a seat in trip
      *
-     * @param Request $request
-     * @return void
+     * @param BookingRequest $request
+     * @param Bus $bus
+     * @return JsonResponse
      */
-    public function book(BookingRequest $request)
+    public function book(BookingRequest $request, Bus $bus)
     {
-        $bus = Bus::findOrFail($request->bus_id);
-
-        $start_stoppage = Stoppage::where('station_id', $request->start_id)
-            ->where('trip_id', $bus->trip->id)
-            ->first();
+        $start_stoppage = Stoppage::where([
+            'station_id' => $request->start_id,
+            'trip_id' => $bus->trip->id
+            ])->first();
 
         $end_stoppage = Stoppage::where('station_id', $request->end_id)
             ->where('trip_id', $bus->trip->id)
             ->first();
+        
+        // Make sure stations order is correct in the trip
+        if($start_stoppage->order >= $end_stoppage->order) {
+            return response()->json([
+                'message' => __('bookings.messages.check_route') 
+            ]);
+        }
 
         $available_seats = $bus->available_seats($start_stoppage->order, $end_stoppage->order);
 

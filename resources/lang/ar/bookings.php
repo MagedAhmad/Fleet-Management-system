@@ -26,6 +26,7 @@ return [
         'updated' => 'تم تعديل الحجز بنجاح .',
         'deleted' => 'تم حذف الحجز بنجاح .',
         'not_available_seats' => 'لا يوجد اماكن فارغه في الرحلة',
+        'check_route' => 'تأكد من ترتيب المحطات'
     ],
     'attributes' => [
         'bus_id' => 'الباص',

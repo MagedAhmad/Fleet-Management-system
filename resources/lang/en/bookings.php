@@ -26,6 +26,7 @@ return [
         'updated' => 'The Booking has been updated successfully.',
         'deleted' => 'The Booking has been deleted successfully.',
         'not_available_seats' => 'No room in this trip',
+        'check_route' => 'Check route order',
     ],
     'attributes' => [
         'bus_id' => 'Bus',

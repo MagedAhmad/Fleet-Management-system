@@ -44,7 +44,7 @@ Route::get('settings', [SettingController::class, 'index'])->name('settings.inde
 Route::middleware(['auth:sanctum'])->group(
     function () {
         // Bookings
-        Route::post('bookings', [BookingController::class, 'book']);
+        Route::post('bookings/{bus}', [BookingController::class, 'book']);
 
     }
 );

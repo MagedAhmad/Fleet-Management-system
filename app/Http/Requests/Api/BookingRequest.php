@@ -27,7 +27,6 @@ class BookingRequest extends FormRequest
     public function rules()
     {
         return [
-            'bus_id' => ['required', 'exists:trips,id'],
             'start_id' => ['required', 'exists:stations,id'],
             'end_id' => ['required', 'exists:stations,id'],
         ];
